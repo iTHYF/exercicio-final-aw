@@ -8,13 +8,23 @@
     <!--css da página-->
     <style>
 
+        body{
+            background-color: rgb(51, 51, 51);
+            color: white;
+        }
+        p{
+            background-color: rgba(255, 51, 0, 0.356);
+            border-radius: 5px;
+            width: 500px;
+        }
+
     </style>
 </head>
 <body>
     <label>Nome:
         <input id="nome"type="text"></input>
     </label>
-
+    
     <label>Profissão:
         <input id="profissao" type="text"></input>
     </label>
@@ -23,25 +33,33 @@
         <input id="qtdependentes"type="number"></input>
     </label>
 
-    <input id="butao" type="button" value="Registrar" onclick="registro()"></input>
+    <input id="botaoregistro" type="button" value="Registrar" onclick="registro()"></input><br>
+    <input id="botaoarray" type="button" value="Registrar" onclick="registro()"></input>
+    <div id="erro">
+        <p id="errodpt"></p>
+    </div>
+    <p id="errovazio"></p>
     <!--javascript da página-->
     <script>
-        var botao = document.getElementById("butao")
+        var botao = document.getElementById("botaoregistro")
         botao.addEventListener("click", registro)
         function registro(){
             /*resgatando os inputs pelo id e os colocando em variáveis*/
             var Nome = document.getElementById("nome").value
             var Profissao = document.getElementById("profissao").value
             var Dependentes = Number(document.getElementById("qtdependentes").value)
+            /*definindo as variaveis de erro*/
+            var ERRODPT = document.getElementsByTagName('p')[0]
+            var ERROVAZIO = document.getElementsByTagName('p')[1]
+
+
             /*verificando se o número de dependentes é negativo*/
             if (Dependentes < 0) {
-                alert("O número de depedentes não pode ser negativo!")
-            }if(Nome==""){
-                alert("Campo nome vazio!")
-            }if(Profissao==""){
-                alert("Campo Profissão vazio!")
-            }if(Dependentes==""){
-                alert("Campo Depedentes vazio!")
+                ERRODPT.innerHTML = ("&#10060 O número de depedentes não pode ser negativo, fera!")
+
+            /*verificando se há campos vazios*/
+            }if(Nome==""||Profissao==""||Dependentes==""){
+                alert("⚠️Todos os campos precisam estar preenchidos, meu bom!")
             }else{
                 var array = [Nome, Profissao, Dependentes]
             }
