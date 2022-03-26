@@ -11,8 +11,45 @@
     </style>
 </head>
 <body>
+    <label>Nome:
+        <input id="nome"type="text"></input>
+    </label>
+
+    <label>Profissão:
+        <input id="profissao" type="text"></input>
+    </label>
+
+    <label>Quantidade de dependentes:
+        <input id="qtdependentes"type="number"></input>
+    </label>
+
+    <input id="butao" type="button" value="Registrar" onclick="registro()"></input>
     <!--javascript da página-->
     <script>
+        var botao = document.getElementById("butao")
+        botao.addEventListener("click", registro)
+        function registro(){
+            /*resgatando os inputs pelo id e os colocando em variáveis*/
+            var Nome = document.getElementById("nome").value
+            var Profissao = document.getElementById("profissao").value
+            var Dependentes = Number(document.getElementById("qtdependentes").value)
+            /*verificando se o número de dependentes é negativo*/
+            if (Dependentes < 0) {
+                alert("O número de depedentes não pode ser negativo!")
+            }if(Nome==""){
+                alert("Campo nome vazio!")
+            }if(Profissao==""){
+                alert("Campo Profissão vazio!")
+            }if(Dependentes==""){
+                alert("Campo Depedentes vazio!")
+            }else{
+                var array = [Nome, Profissao, Dependentes]
+            }
+
+
+
+
+        }
 
     </script>
 </body>
